@@ -35,7 +35,7 @@ pipeline {
 
                     wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
                       echo 'Launching unit tests via yarn ...'
-                      sh "ng test"
+                      sh "yarn build && yarn test"
                     }
                 }
             }
@@ -45,7 +45,7 @@ pipeline {
 
                     wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
                       echo 'Launching unit tests via yarn ...'
-                      sh "ng e2e"
+                      sh "yarn build && yarn e2e"
                     }
                 }
             }
