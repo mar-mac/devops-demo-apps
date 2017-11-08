@@ -10,7 +10,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "predeploy": "ng build -prod -aot",
-    "deploy": "S3BUCKETNAME=name.marmac.devops-demo-app DIST_DIR=../dist node ./scripts/deploy.js"
+    "deploy": "S3BUCKETNAME=name.marmac.devops-demo-app DIST_DIR=../dist node ./scripts/deploy.js",
+    "preci:e2e": "webdriver-manager update --versions.chrome=2.29",
+    "ci:e2e": "ng e2e --progress false --config protractor.conf.js --webdriver-update false"
   },
   "private": true,
   "dependencies": {
