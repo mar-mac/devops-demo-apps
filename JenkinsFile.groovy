@@ -12,7 +12,7 @@ pipeline {
                 steps {
                     echo 'Checkout-EnvPreparation stage: this will checkout the source code from github'
 
-                    git branch: 'jenkins-pipeline',
+                    git branch: 'master',
                             credentialsId: 'github-marcomaccio',
                             url: 'https://github.com/mar-mac/devops-demo-apps.git'
 
