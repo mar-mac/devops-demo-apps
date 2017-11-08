@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "predeploy": "ng build -prod -aot",
-    "deploy": "S3BUCKETNAME=name.marmac.devops-demo-app node ./scripts/deploy.js"
+    "deploy": "S3BUCKETNAME=name.marmac.devops-demo-app DIST_DIR=../dist node ./scripts/deploy.js"
   },
   "private": true,
   "dependencies": {

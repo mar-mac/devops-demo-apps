@@ -3,12 +3,10 @@ const mime  = require('mime-types')   // mime type resolver
 const fs    = require("fs");          // utility from node.js to interact with the file system
 const path  = require("path");        // utility from node.js to manage file/folder paths
 
-var bucketName = process.env.S3BUCKETNAME
-
 // configuration necessary for this script to run
-const config = {
-  s3BucketName: '${bucketName}',    // Bucket name
-  folderPath: '../dist'             // path relative script's location
+var config = {
+  s3BucketName: process.env.S3BUCKETNAME, // 'name.marmac.devops-demo-app', //'${bucketName}',    // Bucket name
+  folderPath: process.env.DIST_DIR // '../dist'             // path relative script's location
 };
 
 // initialise S3 client
@@ -21,10 +19,13 @@ const distFolderPath = path.join(__dirname, config.folderPath);
 fs.readdir(distFolderPath, (err, files) => {
 
   if(!files || files.length === 0) {
+
     console.log(`provided folder '${distFolderPath}' is empty or does not exist.`);
     console.log('Make sure your Angular project was compiled!');
     return;
   }
+
+  console.log(`Deploying the '${config.folderPath}' to S3 Bucket: '${config.s3BucketName}'`)
 
   // for each file in the directory
   for (const fileName of files) {
